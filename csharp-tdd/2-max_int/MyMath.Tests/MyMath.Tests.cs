@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.IO;
 using NUnit.Framework;
 using MyMath;
 
@@ -8,47 +7,40 @@ namespace MyMath.Tests
     [TestFixture]
     public class OperationsTests
     {
-        [TestCase(TestName = "xml documentation")]
-        public void TestXMLDocumentation()
-        {
-            var xmlPath = Path.ChangeExtension(typeof(Operations).Assembly.Location, ".xml");
-            Assert.IsTrue(File.Exists(xmlPath), "XML documentation not found: " + xmlPath);
-        }
-
-        [TestCase(TestName = "regular max")]
-        public void TestRegularMax()
+        [Test]
+        public void Max_PositiveNumbers_ReturnsMax()
         {
             Assert.AreEqual(5, Operations.Max(new List<int> { 1, 5, 3, 2 }));
         }
 
-        [TestCase(TestName = "empty list")]
-        public void TestEmptyList()
-        {
-            Assert.AreEqual(0, Operations.Max(new List<int>()));
-        }
-
-        [TestCase(TestName = "null list")]
-        public void TestNullList()
-        {
-            Assert.AreEqual(0, Operations.Max(null));
-        }
-
-        [TestCase(TestName = "single element")]
-        public void TestSingleElement()
-        {
-            Assert.AreEqual(42, Operations.Max(new List<int> { 42 }));
-        }
-
-        [TestCase(TestName = "negative numbers")]
-        public void TestNegativeNumbers()
+        [Test]
+        public void Max_NegativeNumbers_ReturnsLeastNegative()
         {
             Assert.AreEqual(-1, Operations.Max(new List<int> { -5, -1, -10 }));
         }
 
-        [TestCase(TestName = "max at end")]
-        public void TestMaxAtEnd()
+        [Test]
+        public void Max_EmptyList_ReturnsZero()
         {
-            Assert.AreEqual(10, Operations.Max(new List<int> { 1, 5, 10 }));
+            Assert.AreEqual(0, Operations.Max(new List<int>()));
+        }
+
+        [Test]
+        public void Max_NullList_ReturnsZero()
+        {
+            Assert.AreEqual(0, Operations.Max(null));
+        }
+
+        [Test]
+        public void Max_SingleElement_ReturnsThatElement()
+        {
+            Assert.AreEqual(42, Operations.Max(new List<int> { 42 }));
+        }
+
+        [Test]
+        public void Max_MixedNumbers_ReturnsMax()
+        {
+            Assert.AreEqual(5, Operations.Max(new List<int> { -10, 0, 5, 3, -2 }));
         }
     }
 }

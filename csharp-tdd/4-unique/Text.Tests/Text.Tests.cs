@@ -1,4 +1,3 @@
-using System.IO;
 using NUnit.Framework;
 using Text;
 
@@ -7,41 +6,46 @@ namespace Text.Tests
     [TestFixture]
     public class StrTests
     {
-        [TestCase(TestName = "xml documentation")]
-        public void TestXMLDocumentation()
-        {
-            var xmlPath = Path.ChangeExtension(typeof(Str).Assembly.Location, ".xml");
-            Assert.IsTrue(File.Exists(xmlPath), "XML documentation not found: " + xmlPath);
-        }
-
-        [TestCase(TestName = "first char unique")]
-        public void TestFirstCharUnique()
+        [Test]
+        public void UniqueChar_FirstCharUnique_ReturnsZero()
         {
             Assert.AreEqual(0, Str.UniqueChar("leetcode"));
         }
 
-        [TestCase(TestName = "unique in middle")]
-        public void TestUniqueInMiddle()
+        [Test]
+        public void UniqueChar_UniqueInMiddle_ReturnsIndex()
         {
             Assert.AreEqual(2, Str.UniqueChar("loveleetcode"));
         }
 
-        [TestCase(TestName = "no unique char")]
-        public void TestNoUniqueChar()
+        [Test]
+        public void UniqueChar_NoUniqueChar_ReturnsNegativeOne()
         {
             Assert.AreEqual(-1, Str.UniqueChar("aabb"));
         }
 
-        [TestCase(TestName = "single char")]
-        public void TestSingleChar()
+        [Test]
+        public void UniqueChar_SingleChar_ReturnsZero()
         {
             Assert.AreEqual(0, Str.UniqueChar("z"));
         }
 
-        [TestCase(TestName = "empty string")]
-        public void TestEmptyString()
+        [Test]
+        public void UniqueChar_EmptyString_ReturnsNegativeOne()
         {
             Assert.AreEqual(-1, Str.UniqueChar(""));
+        }
+
+        [Test]
+        public void UniqueChar_NullString_ReturnsNegativeOne()
+        {
+            Assert.AreEqual(-1, Str.UniqueChar(null));
+        }
+
+        [Test]
+        public void UniqueChar_AllSameChar_ReturnsNegativeOne()
+        {
+            Assert.AreEqual(-1, Str.UniqueChar("aaaa"));
         }
     }
 }

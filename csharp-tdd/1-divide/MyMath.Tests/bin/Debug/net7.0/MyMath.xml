@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MyMath</name>
+    </assembly>
+    <members>
+        <member name="T:MyMath.Matrix">
+            <summary>
+            Provides static methods for performing matrix operations on integer arrays.
+            </summary>
+            <remarks>
+            The <c>Matrix</c> class contains utility methods for transforming two-dimensional
+            integer arrays. All methods are static and can be called without creating an instance.
+            </remarks>
+        </member>
+        <member name="M:MyMath.Matrix.Divide(System.Int32[0:,0:],System.Int32)">
+            <summary>
+            Divides every element in a two-dimensional integer matrix by the given divisor.
+            </summary>
+            <remarks>
+            This method creates a new matrix with each element equal to the corresponding element
+            of the input matrix divided by <paramref name="num"/> using integer division.
+            If <paramref name="matrix"/> is <c>null</c>, the method returns <c>null</c>.
+            If <paramref name="num"/> is zero, the method prints an error message and returns <c>null</c>.
+            </remarks>
+            <param name="matrix">A two-dimensional integer array to divide. If <c>null</c>, the method returns <c>null</c>.</param>
+            <param name="num">The integer divisor to apply to every element. Must not be zero.</param>
+            <returns>A new two-dimensional integer array with each element divided, or <c>null</c> on invalid input.</returns>
+        </member>
+    </members>
+</doc>

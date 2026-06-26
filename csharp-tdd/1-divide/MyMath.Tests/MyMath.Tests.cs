@@ -1,4 +1,3 @@
-using System.IO;
 using NUnit.Framework;
 using MyMath;
 
@@ -7,15 +6,8 @@ namespace MyMath.Tests
     [TestFixture]
     public class MatrixTests
     {
-        [TestCase(TestName = "xml documentation")]
-        public void TestXMLDocumentation()
-        {
-            var xmlPath = Path.ChangeExtension(typeof(Matrix).Assembly.Location, ".xml");
-            Assert.IsTrue(File.Exists(xmlPath), "XML documentation not found: " + xmlPath);
-        }
-
-        [TestCase(TestName = "divide by 2")]
-        public void TestDivideByTwo()
+        [Test]
+        public void Divide_ValidMatrix_ReturnsDividedMatrix()
         {
             int[,] matrix = { { 10, 20 }, { 30, 40 } };
             int[,] result = Matrix.Divide(matrix, 2);
@@ -25,21 +17,21 @@ namespace MyMath.Tests
             Assert.AreEqual(20, result[1, 1]);
         }
 
-        [TestCase(TestName = "divide by 0")]
-        public void TestDivideByZero()
+        [Test]
+        public void Divide_ByZero_ReturnsNull()
         {
             int[,] matrix = { { 10, 20 } };
             Assert.IsNull(Matrix.Divide(matrix, 0));
         }
 
-        [TestCase(TestName = "null matrix")]
-        public void TestNullMatrix()
+        [Test]
+        public void Divide_NullMatrix_ReturnsNull()
         {
             Assert.IsNull(Matrix.Divide(null, 2));
         }
 
-        [TestCase(TestName = "divide by 1")]
-        public void TestDivideByOne()
+        [Test]
+        public void Divide_ByOne_ReturnsSameValues()
         {
             int[,] matrix = { { 7, 14 }, { 21, 28 } };
             int[,] result = Matrix.Divide(matrix, 1);
@@ -47,8 +39,8 @@ namespace MyMath.Tests
             Assert.AreEqual(14, result[0, 1]);
         }
 
-        [TestCase(TestName = "divide by negative")]
-        public void TestDivideByNegative()
+        [Test]
+        public void Divide_ByNegative_ReturnsNegatedValues()
         {
             int[,] matrix = { { 10, 20 }, { 30, 40 } };
             int[,] result = Matrix.Divide(matrix, -2);

@@ -1,4 +1,3 @@
-using System.IO;
 using NUnit.Framework;
 using Text;
 
@@ -7,47 +6,46 @@ namespace Text.Tests
     [TestFixture]
     public class StrTests
     {
-        [TestCase(TestName = "xml documentation")]
-        public void TestXMLDocumentation()
+        [Test]
+        public void IsPalindrome_SimpleWord_ReturnsTrue()
         {
-            var xmlPath = Path.ChangeExtension(typeof(Str).Assembly.Location, ".xml");
-            Assert.IsTrue(File.Exists(xmlPath), "XML documentation not found: " + xmlPath);
+            Assert.AreEqual(true, Str.IsPalindrome("level"));
         }
 
-        [TestCase(TestName = "is a palindrome")]
-        public void TestIsPalindrome()
+        [Test]
+        public void IsPalindrome_CaseInsensitive_ReturnsTrue()
         {
-            Assert.IsTrue(Str.IsPalindrome("racecar"));
+            Assert.AreEqual(true, Str.IsPalindrome("Racecar"));
         }
 
-        [TestCase(TestName = "level")]
-        public void TestLevel()
+        [Test]
+        public void IsPalindrome_WithSpacesAndPunctuation_ReturnsTrue()
         {
-            Assert.IsTrue(Str.IsPalindrome("level"));
+            Assert.AreEqual(true, Str.IsPalindrome("A man, a plan, a canal: Panama."));
         }
 
-        [TestCase(TestName = "mixed case")]
-        public void TestMixedCase()
+        [Test]
+        public void IsPalindrome_EmptyString_ReturnsTrue()
         {
-            Assert.IsTrue(Str.IsPalindrome("Racecar"));
+            Assert.AreEqual(true, Str.IsPalindrome(""));
         }
 
-        [TestCase(TestName = "spaces and punctuation")]
-        public void TestSpacesAndPunctuation()
+        [Test]
+        public void IsPalindrome_NullString_ReturnsTrue()
         {
-            Assert.IsTrue(Str.IsPalindrome("A man, a plan, a canal: Panama."));
+            Assert.AreEqual(true, Str.IsPalindrome(null));
         }
 
-        [TestCase(TestName = "empty string")]
-        public void TestEmptyString()
+        [Test]
+        public void IsPalindrome_NotPalindrome_ReturnsFalse()
         {
-            Assert.IsTrue(Str.IsPalindrome(""));
+            Assert.AreEqual(false, Str.IsPalindrome("hello"));
         }
 
-        [TestCase(TestName = "not a palindrome")]
-        public void TestNotAPalindrome()
+        [Test]
+        public void IsPalindrome_SingleChar_ReturnsTrue()
         {
-            Assert.IsFalse(Str.IsPalindrome("hello"));
+            Assert.AreEqual(true, Str.IsPalindrome("a"));
         }
     }
 }

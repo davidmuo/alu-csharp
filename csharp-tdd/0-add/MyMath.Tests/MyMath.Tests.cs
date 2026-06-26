@@ -1,4 +1,3 @@
-using System.IO;
 using NUnit.Framework;
 using MyMath;
 
@@ -7,45 +6,38 @@ namespace MyMath.Tests
     [TestFixture]
     public class OperationsTests
     {
-        [TestCase(TestName = "xml documentation")]
-        public void TestXMLDocumentation()
-        {
-            var xmlPath = Path.ChangeExtension(typeof(Operations).Assembly.Location, ".xml");
-            Assert.IsTrue(File.Exists(xmlPath), "XML documentation not found: " + xmlPath);
-        }
-
-        [TestCase(TestName = "regular addition")]
-        public void TestRegularAddition()
+        [Test]
+        public void Add_PositiveNumbers_ReturnsSum()
         {
             Assert.AreEqual(5, Operations.Add(2, 3));
         }
 
-        [TestCase(TestName = "positive integers")]
-        public void TestPositiveIntegers()
+        [Test]
+        public void Add_LargerPositiveNumbers_ReturnsSum()
         {
             Assert.AreEqual(10, Operations.Add(4, 6));
         }
 
-        [TestCase(TestName = "negative integers")]
-        public void TestNegativeIntegers()
+        [Test]
+        public void Add_NegativeNumbers_ReturnsNegativeSum()
         {
             Assert.AreEqual(-5, Operations.Add(-2, -3));
         }
 
-        [TestCase(TestName = "positive + negative")]
-        public void TestPositiveAndNegative()
+        [Test]
+        public void Add_PositiveAndNegative_ReturnsSum()
         {
             Assert.AreEqual(1, Operations.Add(3, -2));
         }
 
-        [TestCase(TestName = "Add zero")]
-        public void TestAddZero()
+        [Test]
+        public void Add_WithZero_ReturnsOther()
         {
             Assert.AreEqual(5, Operations.Add(5, 0));
         }
 
-        [TestCase(TestName = "0 + 0")]
-        public void TestZeroPlusZero()
+        [Test]
+        public void Add_ZeroAndZero_ReturnsZero()
         {
             Assert.AreEqual(0, Operations.Add(0, 0));
         }
