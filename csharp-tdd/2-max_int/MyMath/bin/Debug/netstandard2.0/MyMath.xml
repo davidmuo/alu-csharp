@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MyMath</name>
+    </assembly>
+    <members>
+        <member name="T:MyMath.Operations">
+            <summary>
+            Provides static methods for performing basic mathematical operations on integers.
+            </summary>
+            <remarks>
+            The <c>Operations</c> class contains utility methods for working with collections
+            of integers. All methods are static and can be called without creating an instance.
+            </remarks>
+        </member>
+        <member name="M:MyMath.Operations.Max(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Returns the maximum integer value found in the given list.
+            </summary>
+            <remarks>
+            This method iterates through the entire list to find the largest integer value.
+            If the list is <c>null</c> or contains no elements, the method returns zero by convention.
+            The method does not modify the original list.
+            </remarks>
+            <param name="nums">A list of integers to search. May be <c>null</c> or empty, in which case returns zero.</param>
+            <returns>The largest integer in <paramref name="nums"/>, or zero if the list is <c>null</c> or empty.</returns>
+        </member>
+    </members>
+</doc>

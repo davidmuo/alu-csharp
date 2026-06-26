@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <Target Name="CopyXmlToLegacyPath" AfterTargets="Build">
+    <MakeDir Directories="bin/Debug/netcoreapp2.1" />
+    <Copy SourceFiles="bin/Debug/net7.0/$(AssemblyName).xml"
+          DestinationFolder="bin/Debug/netcoreapp2.1" />
+  </Target>
+
+</Project>
